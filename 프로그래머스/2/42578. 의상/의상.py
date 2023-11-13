@@ -6,3 +6,20 @@ def solution(clothes):
     for c in counts:
         answer *= c+1
     return answer -1	# 모두 입지 않는 경우의 수 제외
+
+
+
+def solution2(clothes):
+    clothes_type = {}
+
+    for c, t in clothes:
+        if t not in clothes_type:
+            clothes_type[t] = 2
+        else:
+            clothes_type[t] += 1
+
+    cnt = 1
+    for num in clothes_type.values():
+        cnt *= num
+
+    return cnt - 1
