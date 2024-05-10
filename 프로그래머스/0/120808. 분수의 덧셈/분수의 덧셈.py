@@ -1,13 +1,6 @@
-import math
+from fractions import Fraction
+#Fraction(분자,분모) 형식으로 사용한다.
 
-def solution(denum1, num1, denum2, num2):
-    # 1. 두 분수의 합 계산
-    boonmo = num1 * num2
-    boonja = denum1 * num2 + denum2 * num1
-    
-    # 2. 최대공약수 계산
-    gcd_value = math.gcd(boonmo, boonja)
-    
-    # 3. gcd 로 나눈 값을 answer에 담기
-    answer = [boonja / gcd_value, boonmo / gcd_value]
-    return answer
+def solution(numer1,denom1,numer2,denom2):
+    result = Fraction(numer1,denom1)+Fraction(numer2,denom2)
+    return (result.numerator, result.denominator)
