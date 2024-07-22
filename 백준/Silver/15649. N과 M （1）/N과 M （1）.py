@@ -2,7 +2,9 @@ from itertools import permutations
 
 def solve_problem(n, m):
     perm = permutations(range(1, n + 1), m)
-    perm_list = [' '.join(map(str, p)) for p in perm]
+    perm_list = []
+    for p in perm:
+        perm_list.append(' '.join(map(str, p)))
     return perm_list
 
 if __name__ == "__main__":
