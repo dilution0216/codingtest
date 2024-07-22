@@ -2,7 +2,9 @@ from itertools import combinations
 
 def solve_problem(n, m):
     comb = combinations(range(1, n + 1), m)
-    comb_list = [' '.join(map(str, c)) for c in comb]
+    comb_list = []
+    for c in comb:
+        comb_list.append(' '.join(map(str, c)))
     return comb_list
 
 if __name__ == "__main__":
