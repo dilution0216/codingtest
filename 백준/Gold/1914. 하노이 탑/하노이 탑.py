@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+N = int(input().strip())
 
 def hanoi(n, start, mid, end):
     if n == 1:
@@ -10,9 +11,6 @@ def hanoi(n, start, mid, end):
         hanoi(n-1, mid, start, end)
 
 def main():
-
-    N = int(input().strip())
-
     # 이동 횟수 계산
     moves = (1 << N) - 1
     print(moves)
