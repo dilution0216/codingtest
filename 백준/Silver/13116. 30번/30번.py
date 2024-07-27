@@ -1,5 +1,5 @@
 def find_lca(a, b):
-    # 주어진 노드 a와 b의 경로를 추적합니다.
+    # 주어진 노드 a와 b의 경로를 추적
     path_a = []
     path_b = []
 
@@ -19,7 +19,7 @@ def find_lca(a, b):
         if node in path_a:
             return node
 
-# 입력을 처리하여 문제를 해결합니다.
+# 입력을 처리하여 문제를 해결
 def solve_problem(pairs):
     results = []
     for a, b in pairs:
