@@ -1,29 +1,26 @@
-from collections import Counter
+def remove_vowels(word):
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    return ''.join([char for char in word if char not in vowels])
 
-def count_words(word):
-    return Counter(word)
-
-def remove_nouns_from_word(word):
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    return "".join([w for w in list(word) if w not in vowels])
-
-def duramuri_huji(word1, word2):
-    answer = "NO"
-    cnt1, cnt2 = count_words(word1), count_words(word2)
+def check_duramari_effect(word1, word2):
+    # 첫 글자와 마지막 글자가 동일한지 확인
+    if word1[0] != word2[0] or word1[-1] != word2[-1]:
+        return "NO"
     
-    word1_non_vowel = remove_nouns_from_word(word1)
-    word2_non_vowel = remove_nouns_from_word(word2)
+    # 모음을 제거한 후 비교
+    stripped_word1 = remove_vowels(word1)
+    stripped_word2 = remove_vowels(word2)
     
-    condition1 = cnt1 == cnt2
-    condition2 = (word1[0] == word2[0]) and (word1[-1] == word2[-1])
-    condition3 = word1_non_vowel == word2_non_vowel
+    if stripped_word1 != stripped_word2:
+        return "NO"
     
-    if condition1 and condition2 and condition3:
-        answer = "YES"
-        
-    return answer
+    # 두 문자열의 문자 빈도가 같은지 확인
+    if sorted(word1) != sorted(word2):
+        return "NO"
+    
+    return "YES"
 
-if __name__ == "__main__":
+def main():
     import sys
     input = sys.stdin.read
     data = input().split()
@@ -32,4 +29,8 @@ if __name__ == "__main__":
     word1 = data[1]
     word2 = data[2]
     
-    print(duramuri_huji(word1, word2))
+    result = check_duramari_effect(word1, word2)
+    print(result)
+
+if __name__ == "__main__":
+    main()
